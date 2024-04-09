@@ -44,4 +44,4 @@ libraries:
 
 #Clean rule
 clean:
-	rm -f $(XFILES) $(LIB_OBJS) $(shell find . -type f ( -name ".o" ))
+	rm -f $(XFILES) $(LIB_OBJS) $(shell find . -type f \( -name "*.o" -o -name "*.so" \))
