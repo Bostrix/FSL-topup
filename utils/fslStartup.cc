@@ -18,7 +18,7 @@ namespace Utilities {
                 if ( std::getenv("FSL_SKIP_GLOBAL") && std::atoi(std::getenv("FSL_SKIP_GLOBAL")) != 0)
                     return;
                 //Disable openblas threading
-                Utilities::fsl_init_blas_threading();
+             //   Utilities::fsl_init_blas_threading();
             }
     };
 
