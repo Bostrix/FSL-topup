@@ -481,6 +481,11 @@ int main(unsigned int argc, char **argv) {
 
   OptionParser(const std::string& p, const std::string& e): progname_(p), example_(e), overWriteMode_(Allow) {}
 
+// Declare instance_ as a static data member
+static OptionParser* instance_;
+// Declare Instance() function
+static OptionParser* Instance();
+
     /**
        @param o An option to be added to the parser
     */
@@ -509,6 +514,7 @@ int main(unsigned int argc, char **argv) {
     unsigned int parse_config_file(const std::string& filename);
 
     virtual ~OptionParser() {}
+
 
   protected:
     /**

@@ -10,8 +10,9 @@
 
 using namespace MISCMATHS;
 using namespace NEWMAT;
-
-int main (int argc,char** argv)
+using std::cerr;
+using std::endl;
+int main1 (int argc,char** argv)
 {
   cerr << "Test program for 1D kernel interpolation" << endl;
 

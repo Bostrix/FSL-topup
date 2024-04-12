@@ -35,13 +35,13 @@ namespace Utilities {
 
 using namespace Utilities;
 
-Option<bool> verbose(string("-V,--verbose"), false, 
+static Option<bool> verbose(string("-V,--verbose"), false, 
 		     string("switch on diagnostic messages"), 
 		     false, no_argument);
 Option<bool> debugging(string("-D"), false, 
 		     string("switch on debugging mode"), 
 		     false, no_argument);
-Option<bool> help(string("-h,--help"), false,
+static Option<bool> help(string("-h,--help"), false,
 		  string("display this message"),
 		  false, no_argument);
 Option<float> dof(string("-d,--dof"), 100.0,
@@ -74,17 +74,17 @@ strseq(string("-I"), std::vector<string>(),
        string("A coma seperated include path"),
        false, requires_argument);
 
-string title = 
+static string title = 
 "opttst (Version 2.0)\n\n\
 Copyright(c) 2000-2007, University of Oxford\n\
 Author: Dave Flitney";
 
-string examples =
+static string examples =
 "opttst --dof=<number> --mask=<filename> --res=<filename>\n\
 opttst -d <number> -m <filename> -r <filename>\n\
 opttst --verbose\n";
 
-int main(int argc, char **argv) {
+int main5(int argc, char **argv) {
 
   OptionParser options(title, examples);
 
