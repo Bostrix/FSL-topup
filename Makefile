@@ -5,7 +5,7 @@ CXX = g++
 CXXFLAGS += -fpic
 
 # Additional LDFLAGS for library
-ADDED_LDFLAGS = -L${HOME}/topup/warpfns -L${HOME}/topup/meshclass -L${HOME}/topup/znzlib -L${HOME}/topup/miscmaths -L${HOME}/topup/basisfield -L${HOME}/topup/utils -lfsl-warpfns -lfsl-meshclass -lfsl-znz -lfsl-miscmaths -lfsl-basisfield -lfsl-utils
+ADDED_LDFLAGS = -L${HOME}/FSL-topup/warpfns -L${HOME}/FSL-topup/meshclass -L${HOME}/FSL-topup/znzlib -L${HOME}/FSL-topup/miscmaths -L${HOME}/FSL-topup/basisfield -L${HOME}/FSL-topup/utils -lfsl-warpfns -lfsl-meshclass -lfsl-znz -lfsl-miscmaths -lfsl-basisfield -lfsl-utils
 
 #Define source files
 SRCS = topup_matrices topup_file_io topup_costfunctions topupfns displacement_vector topup applytopup 
@@ -52,5 +52,5 @@ libraries:
  	done
 #Clean rule
 clean:
-	rm -f $(XFILES) $(LIB_OBJS) $(shell find . -type f \( -name ".o" -o -name ".so" \))
+	rm -f topup applytopup $(shell find . -type f \( -name "*.o" -o -name "*.so" \))
 

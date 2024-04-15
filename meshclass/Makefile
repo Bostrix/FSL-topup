@@ -17,8 +17,8 @@ libfsl-meshclass.so: ${MESHOBJS}
 	$(CXX) $(CXXFLAGS) -shared -o $@ $^ $(LDFLAGS)
 
 drawmesh: ${DRAWOBJS}
-	${CXX} ${CXXFLAGS} -o $@ $^ -L${HOME}/topup/newimage -L${HOME}/topup/miscmaths -L${HOME}/topup/NewNifti \
-        -L${HOME}/topup/cprob -L${HOME}/topup/znzlib -L${HOME}/topup/utils -lfsl-newimage -lfsl-miscmaths -lfsl-NewNifti -lfsl-cprob -lfsl-znz -lfsl-utils -llapack -lblas -lz
+	${CXX} ${CXXFLAGS} -o $@ $^ -L${HOME}/FSL-topup/newimage -L${HOME}/FSL-topup/miscmaths -L${HOME}/FSL-topup/NewNifti \
+        -L${HOME}/FSL-topup/cprob -L${HOME}/FSL-topup/znzlib -L${HOME}/FSL-topup/utils -lfsl-newimage -lfsl-miscmaths -lfsl-NewNifti -lfsl-cprob -lfsl-znz -lfsl-utils -llapack -lblas -lz
 
 selfintersection: ${INTEROBJS}
 	${CXX} ${CXXFLAGS} -o $@ $^ ${LDFLAGS}
