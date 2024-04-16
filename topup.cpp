@@ -23,7 +23,7 @@
 #include "miscmaths/miscmaths.h"
 #include "miscmaths/nonlin.h"
 #include "utils/stack_dump.h"
-#include "utils/FSLProfiler.h"
+//#include "utils/FSLProfiler.h"
 #include "warpfns/warpfns.h"
 #include "basisfield/basisfield.h"
 #include "basisfield/splinefield.h"
@@ -54,9 +54,9 @@ int main(int   argc, char  *argv[]) try
   }
 
   // Prime profiler if requested by user
-  if (clp->Profile()) Utilities::FSLProfiler::SetProfilingOn(clp->ProfileFname());
-  Utilities::FSLProfiler prof("_"+string(__FILE__)+"_"+string(__func__)+".txt");
-  double total_key = prof.StartEntry("Begins topup run");
+  //if (clp->Profile()) Utilities::FSLProfiler::SetProfilingOn(clp->ProfileFname());
+  //Utilities::FSLProfiler prof("_"+string(__FILE__)+"_"+string(__func__)+".txt");
+  //double total_key = prof.StartEntry("Begins topup run");
 
   // Read input images
   NEWIMAGE::volume4D<float>  in;
@@ -92,7 +92,7 @@ int main(int   argc, char  *argv[]) try
     // Create cost-function object and
     // set properties for first level
 
-    cf = std::shared_ptr<TopupCF>(new TopupCF(in,clp->PhaseEncodeVectors(),clp->ReadoutTimes(),clp->WarpRes(1),clp->SplineOrder(),Utilities::NoOfThreads(clp->NoOfThreads())));
+    cf = std::shared_ptr<TopupCF>(new TopupCF(in,clp->PhaseEncodeVectors(),clp->ReadoutTimes(),clp->WarpRes(1),clp->SplineOrder()));
     cf->SetTracePrint(clp->Trace());
     cf->SetVerbose(clp->Verbose());
     cf->SetDebug(clp->DebugLevel());
@@ -124,7 +124,7 @@ int main(int   argc, char  *argv[]) try
 
   // Run minimisation at first level
 
-  double level_key = prof.StartEntry("Begins topup level 1");
+  //double level_key = prof.StartEntry("Begins topup level 1");
   try {
     nonlin(*nlpar,*cf);
   }
@@ -133,15 +133,15 @@ int main(int   argc, char  *argv[]) try
     cerr << "Exception thrown with message: " << error.what() << endl;
     exit(EXIT_FAILURE);
   }
-  prof.EndEntry(level_key);
+  //prof.EndEntry(level_key);
 
   // Run remaining levels to refine solution.
 
   unsigned int l=2;
   try {
     for ( ; l<=clp->NoOfLevels(); l++) {
-      std::ostringstream os; os << "Begins topup level " << l;
-      level_key = prof.StartEntry(os.str());
+    //  std::ostringstream os; os << "Begins topup level " << l;
+     // level_key = prof.StartEntry(os.str());
       if (clp->Verbose()) cout << "***Going to next resolution level***" << endl;
       // Change settings for cost-function object
       cf->SetLevel(l);
@@ -165,7 +165,7 @@ int main(int   argc, char  *argv[]) try
         cerr << "Exception thrown with message: " << error.what() << endl;
         exit(EXIT_FAILURE);
       }
-      prof.EndEntry(level_key);
+      //prof.EndEntry(level_key);
     }
   }
   catch (const std::exception& error) {
@@ -200,7 +200,7 @@ int main(int   argc, char  *argv[]) try
     exit(EXIT_FAILURE);
   }
 
-  prof.EndEntry(total_key);
+  //prof.EndEntry(total_key);
   exit(EXIT_SUCCESS);
 }
 catch(const std::exception& e)
