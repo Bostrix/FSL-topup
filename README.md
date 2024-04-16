@@ -42,7 +42,7 @@ Make sure `$(ADDED_LDFLAGS)` is included in the compile step of the makefile.
 - Confirm that the file `point_list.h` within the warpfns library accurately includes the path to `armawrap/newmat.h`.
   
 - Verify the accurate paths in meshclass's Makefile:
-verify the correct path in the makefile of meshclass to include Linker flags for the required libraries. For instance, if utilizing the newimage,miscmaths,NewNifti,cprob,znzlib,utils libraries as LDFLAGS variable in meshclass makefile,ensure that the correct path is present in the makefile.
+Verify the accurate paths in meshclass's Makefile: Ensure the correct linker paths for the newimage, miscmaths, NewNifti, znzlib, cprob and utils libraries are included.
 
 - Compile Source Code:
 Execute the appropriate compile command to build the TOPUP tool. For example:
@@ -73,7 +73,7 @@ By running this command, you've set the `FSLOUTPUTTYPE` environment variable to 
 
 ## Usage
 Once TOPUP is successfully compiled, you can use it for distortion correction in diffusion imaging. Follow these steps to utilize TOPUP and applytopup effectively:
-- Running TOPUP
+- Running TOPUP:
   Ensure you have prepared Input images with different acquisition parameters,Text file containing acquisition parameters and Configuration file specifying TOPUP parameters (optional but recommended).
   Execute the ./topup command with the required options and input files. Here is the basic syntax:
 ```bash
@@ -82,14 +82,14 @@ Once TOPUP is successfully compiled, you can use it for distortion correction in
   Replace `<input_images.nii>`, `<acquisition_parameters.txt>`, `<config_file.cnf>`, and `<output_prefix>` with the paths to your input images, acquisition parameters file, configuration file, and output prefix, respectively.
 Customize the behavior of TOPUP by providing additional options as needed. Refer to the usage guide provided in the documentation for a list of available options and their descriptions.
 
-- Applying TOPUP Corrections
+- Applying TOPUP Corrections:
 Ensure you have prepared Input images to be corrected (e.g., b=0 and diffusion weighted images) and Output directory for corrected images.Then,Run applytopup with the following command syntax:
 ```bash
 applytopup -i=<input_images.nii> -a=<acquisition_parameters.txt> -x=<index.txt> -t=<topup_results> -o=<output_directory>
 ```
 Replace `<input_images.nii>`, `<acquisition_parameters.txt>`, `<index.txt>`, `<topup_results>`, and `<output_directory>` with the paths to your input images, acquisition parameters file, index file, TOPUP results, and output directory, respectively.
 
-- Interpreting Output
+- Interpreting Output:
 After running TOPUP and applytopup, you will obtain various output files that provide valuable information about the distortion correction process.Customize the behavior of TOPUP by providing additional options as needed. Refer to the usage guide provided in the documentation for a list of available options and their descriptions.
 
 # Conclusion
